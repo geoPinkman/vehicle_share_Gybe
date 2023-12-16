@@ -1,0 +1,35 @@
+spring:
+  flyway:
+    baseline-on-migrate: true
+
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://green-gekko-db.cuswpynytgrk.ap-southeast-1.rds.amazonaws.com:5432/greengekko
+    username: gekko
+    password: s3cr3t88
+
+  jooq:
+    sql-dialect: postgres
+
+  main:
+    allow-circular-references: true
+    allow-bean-definition-overriding: true
+
+  mvc:
+    pathmatch:
+      matching-strategy: ant_path_matcher
+
+  thymeleaf:
+    check-template-location: true
+
+
+mailgun:
+  apiKey: f740ecb6e8bfda8d719252b13137c668-30344472-1ccea35f
+  domain: sandbox1deaa7cc8f6b4d34a3e372a11f4bc6d6.mailgun.org
+  senderEmail: info@g-gekko.com
+
+twilio:
+  verificationId: VAe34cca1e85d88b6f9bef22616ce2da5f
+  serviceId: MG8d0d775726e9e401810c58b4760b3631
+  userLogin: AC331a9caf023bc1f2b8fcf1e180050da7
+  userPassword: 4625b646f5dbb90b5974062337921c2e

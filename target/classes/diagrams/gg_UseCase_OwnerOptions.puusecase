@@ -1,0 +1,80 @@
+@startuml
+title
+    System usage options for owner
+endtitle
+
+left to right direction
+skinparam shadowing false
+skinparam actorStyle Awesome
+
+actor "Owner" as owner
+
+rectangle VehiclePatternOptions {
+    usecase "Create pattern of vehicle" as createPattern
+    usecase "Update pattern of vehicle" as updatePattern
+    usecase "Get of available pattern by id" as getOfAvailable
+    usecase "Get all patterns" as getAllPatterns
+}
+owner -down-> createPattern
+
+createPattern <.. updatePattern
+owner -down-> getOfAvailable
+owner -down->getAllPatterns
+
+rectangle VehicleOptions {
+    usecase "Create vehicle" as createVehicle
+    usecase "Get all of his vehicles" as getAllVehicles
+    usecase "Get his own vehicle" as getVehicle
+    usecase "Edit vehicle" as updateVehicle
+    usecase "Add pictures of vehicle" as addPicture
+    usecase "Get picture" as getPicture
+    usecase "Delete gotten picture" as deletePicture
+    usecase "Add verification documents for vehicle" as addDocuments
+    usecase "Manage additional options" as manageOptions
+    usecase "Manage prices" as managePrice
+
+    usecase "Get list of rent dates" as getRentList
+
+    usecase "Cancel creating vehicle" as cancelCreate
+    usecase "Delete his own vehicle" as deleteVehicle
+
+}
+getVehicle <.. updateVehicle
+getVehicle <.. getRentList
+getAllVehicles <.. getVehicle
+updateVehicle <... addDocuments
+updateVehicle <... addPicture
+updateVehicle <... getPicture
+updateVehicle <.. manageOptions
+updateVehicle <.. managePrice
+getPicture <.. deletePicture
+
+createVehicle <-up- owner
+cancelCreate <-up- owner
+getAllVehicles <-up- owner
+deleteVehicle <-up- owner
+
+rectangle PrivateOptions {
+    usecase "Check all private information" as getInfo
+    usecase "Update his own information" as updateInfo
+    usecase "Update firstname" as updateFirstname
+    usecase "Update lastname" as updateLastname
+    usecase "Update company name" as updateCompanyName
+    usecase "Update phone number" as updatePhoneNumber
+    usecase "Update address" as updateAddress
+    usecase "Change password " as changePassword
+    usecase "Delete account from system" as deleteAccount
+}
+updateInfo <... updateFirstname
+updateInfo <... updateLastname
+updateInfo <... updateCompanyName
+updateInfo <... updatePhoneNumber
+updateInfo <... updateAddress
+updateInfo <... changePassword
+
+owner --> getInfo
+owner --> updateInfo
+owner --> deleteAccount
+
+
+@enduml

@@ -1,0 +1,91 @@
+@startuml
+title
+    System usage options for users
+endtitle
+
+left to right direction
+skinparam shadowing false
+skinparam actorStyle Awesome
+
+actor "User" as user
+actor "Verified user" as verifiedUser
+actor "Customer" as customer
+actor "Merchant" as merchant
+
+rectangle User {
+    usecase "Look up all vehicles" as getAll
+    usecase "Look up vehicle by params" as findByParams
+    usecase "Choose vehicle" as chooseVehicle
+    usecase "Verification" as verification
+    usecase "Make a merchant" as makeMerchant
+}
+rectangle Verified_user {
+    usecase "Create order" as createOrder
+    usecase "Cancel order" as cancelOrder
+    usecase "Modify order" as ModifyOrder
+    usecase "Confirm order" as confirmOrder
+    usecase "Registration in app" as registration
+    usecase "Pay order" as payOrder
+    usecase "Contact the service" as contactService
+}
+
+rectangle Customer {
+    usecase "Chat to merchant by email" as chatToMerchant
+    usecase "Check own orders" as checkOrders
+    usecase "Save merchant information" as saveMerchant
+    usecase "Delete order" as deleteOrder
+}
+
+rectangle Merchant {
+    usecase "Contact the service" as contactService
+    usecase "Send email to customer" as sendEmail
+    usecase "Add vehicles in system" as addVehicle
+    usecase "Modify vehicle informaion" as modifyVehicle
+    usecase "Delete vehicle" as deleteVehicle
+    usecase "Look over his all vehicles" as lookOver
+    usecase "Get information to vehicle" as findByParam
+}
+
+merchant --> sendEmail
+merchant --> addVehicle
+merchant --> modifyVehicle
+merchant --> deleteVehicle
+merchant --> lookOver
+merchant --> findByParam
+merchant --> contactService
+
+note left of payOrder
+    Availabe cash or
+    card payment.
+    If payment by card:
+    use BankAPI
+    else confirm order.
+endnote
+
+user --> getAll
+user --> findByParams
+user --> chooseVehicle
+user --> makeMerchant
+
+verification <. chooseVehicle : user have to\n verify before\n start making\n order
+user <|-up- verifiedUser : extends\na regular user\n after verification
+
+createOrder <-- verifiedUser
+createOrder <. ModifyOrder : additional\n merchant\n options
+cancelOrder <-- verifiedUser
+confirmOrder <-- verifiedUser
+contactService <-- verifiedUser
+confirmOrder .> registration : user have to\n registration before\n confirm order
+registration <. payOrder : user can pay\n order by card
+
+
+verifiedUser <|-- customer : extends\na verified user\n after registartion
+
+customer --> checkOrders
+customer --> chatToMerchant
+customer --> saveMerchant
+customer --> deleteOrder
+
+merchant -left-|> user : extends\n regular user\n after KYB\n process
+
+@enduml

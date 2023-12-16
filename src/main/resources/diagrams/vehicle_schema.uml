@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>DATABASE</ID>
+  <OriginalElement>03585701-0a48-4afa-b4dc-5ce11b3b4a3f.SCHEMA:greenGekko.public</OriginalElement>
+  <nodes>
+    <node x="40.5" y="246.0">03585701-0a48-4afa-b4dc-5ce11b3b4a3f.TABLE:greenGekko.public.vehicle_pictures</node>
+    <node x="-520.0" y="29.0">03585701-0a48-4afa-b4dc-5ce11b3b4a3f.TABLE:greenGekko.public.flyway_schema_history</node>
+    <node x="308.0" y="246.0">03585701-0a48-4afa-b4dc-5ce11b3b4a3f.TABLE:greenGekko.public.vehicles</node>
+    <node x="804.25" y="-19.0">03585701-0a48-4afa-b4dc-5ce11b3b4a3f.TABLE:greenGekko.public.owner_options</node>
+    <node x="695.0" y="365.0">03585701-0a48-4afa-b4dc-5ce11b3b4a3f.TABLE:greenGekko.public.vehicle_patterns</node>
+    <node x="38.5" y="375.0">03585701-0a48-4afa-b4dc-5ce11b3b4a3f.TABLE:greenGekko.public.vehicle_rent_dates</node>
+    <node x="1114.0" y="22.0">03585701-0a48-4afa-b4dc-5ce11b3b4a3f.TABLE:greenGekko.public.owners</node>
+    <node x="-39.5" y="29.0">03585701-0a48-4afa-b4dc-5ce11b3b4a3f.TABLE:greenGekko.public.vehicle_documents</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="03585701-0a48-4afa-b4dc-5ce11b3b4a3f.TABLE:greenGekko.public.vehicle_documents" target="03585701-0a48-4afa-b4dc-5ce11b3b4a3f.TABLE:greenGekko.public.vehicles" relationship="REFERENCES">
+      <point x="129.0" y="0.0" />
+      <point x="283.0" y="122.5" />
+      <point x="283.0" y="394.5" />
+      <point x="-129.0" y="0.0" />
+    </edge>
+    <edge source="03585701-0a48-4afa-b4dc-5ce11b3b4a3f.TABLE:greenGekko.public.vehicles" target="03585701-0a48-4afa-b4dc-5ce11b3b4a3f.TABLE:greenGekko.public.vehicle_patterns" relationship="REFERENCES">
+      <point x="129.0" y="74.25" />
+      <point x="591.0" y="468.75" />
+      <point x="591.0" y="469.5" />
+      <point x="-89.5" y="0.0" />
+    </edge>
+    <edge source="03585701-0a48-4afa-b4dc-5ce11b3b4a3f.TABLE:greenGekko.public.vehicle_rent_dates" target="03585701-0a48-4afa-b4dc-5ce11b3b4a3f.TABLE:greenGekko.public.vehicles" relationship="REFERENCES">
+      <point x="89.5" y="0.0" />
+      <point x="263.25" y="435.5" />
+      <point x="263.25" y="394.5" />
+      <point x="-129.0" y="0.0" />
+    </edge>
+    <edge source="03585701-0a48-4afa-b4dc-5ce11b3b4a3f.TABLE:greenGekko.public.vehicles" target="03585701-0a48-4afa-b4dc-5ce11b3b4a3f.TABLE:greenGekko.public.owners" relationship="REFERENCES">
+      <point x="129.0" y="-74.25" />
+      <point x="591.0" y="320.25" />
+      <point x="591.0" y="159.5" />
+      <point x="-129.0" y="0.0" />
+    </edge>
+    <edge source="03585701-0a48-4afa-b4dc-5ce11b3b4a3f.TABLE:greenGekko.public.owner_options" target="03585701-0a48-4afa-b4dc-5ce11b3b4a3f.TABLE:greenGekko.public.owners" relationship="REFERENCES">
+      <point x="75.0" y="0.0" />
+      <point x="591.0" y="52.5" />
+      <point x="591.0" y="159.5" />
+      <point x="-129.0" y="0.0" />
+    </edge>
+    <edge source="03585701-0a48-4afa-b4dc-5ce11b3b4a3f.TABLE:greenGekko.public.vehicle_pictures" target="03585701-0a48-4afa-b4dc-5ce11b3b4a3f.TABLE:greenGekko.public.vehicles" relationship="REFERENCES">
+      <point x="88.5" y="0.0" />
+      <point x="283.0" y="295.5" />
+      <point x="283.0" y="394.5" />
+      <point x="-129.0" y="0.0" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic" zoom="0.5" showDependencies="false" x="941.0" y="486.0" />
+  <SelectedNodes>
+    <node>03585701-0a48-4afa-b4dc-5ce11b3b4a3f.TABLE:greenGekko.public.owner_options</node>
+  </SelectedNodes>
+  <Categories>
+    <Category>Columns</Category>
+    <Category>Comments</Category>
+    <Category>Key columns</Category>
+    <Category>Virtual foreign keys</Category>
+  </Categories>
+</Diagram>
+

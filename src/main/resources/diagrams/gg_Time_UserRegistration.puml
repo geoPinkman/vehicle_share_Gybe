@@ -1,0 +1,58 @@
+@startuml
+
+skinparam shadowing false
+skinparam actorStyle Awesome
+skinparam responseMessageBelowArrow true
+autonumber
+title User registration flow
+
+actor User
+
+
+User -> Web : User come on /registration
+Web --> User : Redirect to validation email\nreturn field for entering this
+
+User -> Web : User enter his email
+database GG_db
+Web -> GG_db : get User by Email
+
+GG_db -> GG_db : find User By Email
+GG_db --> Web : response JUser
+alt JUser Not Null
+    Web -> Web : check JUser.UUID
+    alt JUser.UUID Not Null
+        Web --> User : response /login form
+        note left : means that user\nalready registered\nin system
+    else JUser.UUID Null
+        Web -> GG_db : get verification by JUser.email
+        GG_db -> GG_db : find status
+        GG_db --> Web : response status string
+        alt JUser.email status Verified
+            Web --> User : response /registration form for verified user
+            note left : means that user\nalready verified but\nnot yet registered\nin system
+        else JUser.email status Not Verified
+            Web -> Web : continue\nprocess of verification
+            note left : This process get other\nspecial block for verify.\nAfter finished verification\nuser can continue registration
+        end
+
+    end
+
+else JUser Null
+         GG_db --> Web : response JUser
+         Web -> Web : send verify code to email
+         Web -> GG_db : save verify code to GG_db
+         Web --> User : send message to user with verify code
+
+end
+User -> Web : input verify code from email
+Web -> GG_db : send code to GG_db
+GG_db -> GG_db : check equal codes
+GG_db -> Web : response message about equal
+alt true
+    Web --> User : response /registration form for verified user
+else false
+    Web -> Web : Wait some time after that stopped verification
+    Web -> GG_db : email status Not Verified
+    Web --> User : redirect to /home
+end
+@enduml

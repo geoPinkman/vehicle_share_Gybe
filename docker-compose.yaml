@@ -1,0 +1,12 @@
+version: '3'
+
+services:
+  postgres:
+    image: 'postgres:13.6-alpine'
+    container_name: 'Green-Gekko'
+    ports:
+      - 5432:5432
+    environment:
+      - 'POSTGRES_DB=greenGekko'
+      - 'POSTGRES_USER=gekko'
+      - 'POSTGRES_PASSWORD=s3cr3t'
